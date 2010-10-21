@@ -1,0 +1,9 @@
+!!!
+%html{"xmlns"=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"en"}
+  %head
+    %title Is he alive?
+  %body
+    - @projects.each do |project|
+      %div.projects
+        %span= project[:name]
+        %span= project[:status]
