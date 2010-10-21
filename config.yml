@@ -1,10 +1,5 @@
 --- projects:
-    - name: colaboracoes
-      link: http://colaboracoes.globo.com
-    - name: participacoes
-      link: http://participacoes.globo.com
-# --- projects:
-#   - name: project
-#     link: http://project-link-without/healthcheck
-#   - name: project
-#     link: http://project-link-without/healthcheck
+  - name: project
+    link: http://project-link-without/healthcheck
+  - name: project
+    link: http://project-link-without/healthcheck
