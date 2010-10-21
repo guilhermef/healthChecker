@@ -2,11 +2,11 @@
 require 'sinatra'
 require 'connection'
 require 'yaml'
-
-config = YAML::load(File.read('config.yml'))
+require 'haml'
 
 
 get '/' do
+  config = YAML::load(File.read('config.yml'))
   @projects = []
   config['projects'].each do |project|
     status = Connection.is_200?(project['link'])
