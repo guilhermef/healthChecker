@@ -6,4 +6,6 @@ group :test do
   gem "rspec", "~>2.0.1"
   gem "cucumber"
   gem "fakeweb"
+  gem "rack-test"
+  gem "mocha"
 end

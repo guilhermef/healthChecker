@@ -1,16 +1,30 @@
 #healthchecker.rb
 require 'sinatra'
-require 'connection'
+require 'lib/connection'
 require 'yaml'
 require 'haml'
+require 'json'
+
+  
+
+# get '/' do
+#   @projects = []
+#   config['projects'].each do |project|
+#     response = Connection.new(project['link'])
+#     @projects << {:name => project['name'], :status => response.status_code}
+#   end
+#   haml :index
+# end
+
+get "/config" do
+  config = YAML::load_file('config.yml')
+  config.to_json
+end
 
 
-get '/' do
-  config = YAML::load(File.read('config.yml'))
-  @projects = []
-  config['projects'].each do |project|
-    status = Connection.is_200?(project['link'])
-    @projects << {:name => project['name'], :status => status}
-  end
-  haml :index
+get "/:project_name" do
+  config = YAML::load_file('config.yml')
+  project_link = config['projects'][params[:project_name]]
+  response = Connection.new(project_link)
+  response.status_code
 end

@@ -4,9 +4,9 @@ require 'uri'
 class Connection
 
   def initialize(url)
-    url = URI.parse(url)
-    @response = Net::HTTP.start(url.host, url.port) {|http|
-      http.get('/')
+    uri = URI.parse(url)
+    @response = Net::HTTP.start(uri.host, uri.port) {|http|
+      http.get(uri.path)
     }
   end
   

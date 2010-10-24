@@ -1,5 +1,3 @@
 --- projects:
-  - name: Colaboracoes
-    link: http://colaboracoes.globo.com
-  - name: Participacoes
-    link: http://participacoes.globo.com
+    Colaboracoes: http://colaboracoes.globo.com/healthcheck
+    Participacoes: http://participacoes.globo.com/healthcheck
