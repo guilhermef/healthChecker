@@ -16,6 +16,16 @@ describe 'Healthchecker App' do
     Sinatra::Application
   end
 
+  it "index page" do
+    YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
+    get '/'
+    last_response.should be_ok
+    last_response.body.should include "my-200-project"
+    last_response.body.should include "my-404-project"
+    last_response.body.should include "my-500-project"
+  end
+  
+
   it "config on json format" do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/config'
