@@ -20,7 +20,7 @@ get "/config" do
 end
 
 
-get "/:project_name" do
+get "/projeto/:project_name" do
   project_link = @config['projects'][params[:project_name]]
   response = Connection.new(project_link)
   response.status_code
