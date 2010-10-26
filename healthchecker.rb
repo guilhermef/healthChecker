@@ -14,8 +14,7 @@ before do
 end
 
 get '/' do
-  @projects = @config['projects'].keys
-  haml :index
+  erb :index
 end
 
 get "/config" do
@@ -24,7 +23,7 @@ end
 
 
 get "/projeto/:project_name" do
-  project_link = @config['projects'][params[:project_name]]
+  project_link = @config['projects'][params[:project_name]]['url']
   response = Connection.new(project_link)
   response.status_code
 end
