@@ -1,4 +1,6 @@
-#healthchecker.rb
+require "rubygems"
+require "bundler/setup"
+
 require 'sinatra'
 require 'connection'
 require 'yaml'
