@@ -2,8 +2,9 @@
 %html{"xmlns"=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"en"}
   %head
     %title Is he alive?
-    =javascript_include_tag "javascript/views/index.js", "javascript/lib/jquery-1.4.3.min.js"
-    =stylesheet_link_tag "/stylesheets/main.css"
+    %script{:src => "/javascript/lib/jquery-1.4.3.min.js"}
+    %script{:src => "/javascript/views/index.js"}
+    %link{:href => "/stylesheets/index.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
   %body
     - @projects.each do |project|
       %div.projects
