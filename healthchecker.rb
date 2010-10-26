@@ -2,17 +2,28 @@ require "rubygems"
 require "bundler/setup"
 
 require 'sinatra'
-require 'connection'
+require 'lib/connection'
 require 'yaml'
 require 'haml'
+require 'json'
 
+  
+before do
+  @config = YAML::load_file('config.yml')
+end
 
 get '/' do
-  config = YAML::load(File.read('config.yml'))
-  @projects = []
-  config['projects'].each do |project|
-    status = Connection.is_200?(project['link'])
-    @projects << {:name => project['name'], :status => status}
-  end
+  @projects = @config['projects'].keys
   haml :index
+end
+
+get "/config" do
+  @config.to_json
+end
+
+
+get "/projeto/:project_name" do
+  project_link = @config['projects'][params[:project_name]]
+  response = Connection.new(project_link)
+  response.status_code
 end

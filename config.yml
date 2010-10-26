@@ -1,5 +1,3 @@
 --- projects:
-  - name: project
-    link: http://project-link-without/healthcheck
-  - name: project
-    link: http://project-link-without/healthcheck
+    Colaboracoes: http://colaboracoes.globo.com/healthcheck
+    Participacoes: http://participacoes.globo.com/healthcheck

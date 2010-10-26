@@ -2,11 +2,9 @@
 %html{"xmlns"=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"en"}
   %head
     %title Is he alive?
-    %script{:src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js'}
-    %script{:src => '/javascripts/main.js'}
-    %link{:href => "/stylesheets/main.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+    =javascript_include_tag "javascript/views/index.js", "javascript/lib/jquery-1.4.3.min.js"
+    =stylesheet_link_tag "/stylesheets/main.css"
   %body
     - @projects.each do |project|
       %div.projects
-        %span= project[:name]
-        %span= project[:status]
+        %span= project
