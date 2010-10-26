@@ -30,26 +30,26 @@ describe 'Healthchecker App' do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/config'
     last_response.should be_ok
-    last_response.body.should == "{\"projects\":{\"my-200-project\":\"http://www.return.200.com/healthcheck\",\"my-404-project\":\"http://www.return.404.com/healthcheck\",\"my-500-project\":\"http://www.return.500.com/healthcheck\"}}"
+    last_response.body.should ==  "{\"projects\":{\"my-200-project\":\"http://www.return.200.com/healthcheck\",\"my-404-project\":\"http://www.return.404.com/healthcheck\",\"my-500-project\":\"http://www.return.500.com/healthcheck\"}}"
   end
   
   it "should return a project status 200" do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/my-200-project'
+    get '/projeto/my-200-project'
     last_response.should be_ok
     last_response.body.should == "200" 
   end
   
   it "should return a project status 404" do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/my-404-project'
+    get '/projeto/my-404-project'
     last_response.should be_ok
     last_response.body.should == "404" 
   end
   
   it "should return a project status 500" do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/my-500-project'
+    get '/projeto/my-500-project'
     last_response.should be_ok
     last_response.body.should == "500" 
   end
