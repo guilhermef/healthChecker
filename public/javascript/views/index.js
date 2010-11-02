@@ -33,7 +33,7 @@ function showMessageError(XMLHttpRequest, textStatus, errorThrown){
 }
 
 function html_monitor_for(project){
-  var monitor_template = '<li><img id="{id}" src="{img}" alt="{alt}" title="{title}" /></li>';
+  var monitor_template = '<li id="{id}" data="">{title}<ul><li></li><li class="beginning_fail"></li><li class="fail"></li><li class="beginning_ok"></li><li></li></ul></li>';
   return monitor_template.replace('{img}',   project.imgOk)
                          .replace('{title}', project.name)
                          .replace('{alt}',   project.name)
