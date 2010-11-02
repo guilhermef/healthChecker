@@ -22,8 +22,11 @@ get "/config" do
 end
 
 
-get "/projeto/:project_name" do
-  project_link = @config['projects'][params[:project_name]]['url']
+get "/project/:project_name" do
+  project_key = params[:project_name]
+  project_config = @config['projects'][project_key]
+  project_link = project_config['url']
   response = Connection.new(project_link)
-  response.status_code
+  resposta = {:project_name => project_key, :status => response.status_code}
+  resposta.to_json
 end

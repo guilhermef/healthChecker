@@ -1,13 +1,13 @@
 ---
 projects:
-  Colaboracoes:
+  colaboracoes:
     id:     colaboracoes
     name:   Colaborações
     url:    http://colaboracoes.globo.com/healthcheck
     imgOk:  /images/colaboracoes.jpg
     imgOut: /images/colaboracoes-red.jpg
 
-  Participacoes:
+  participacoes:
     id:     participacoes
     name:   Participações
     url:    http://participacoes.globo.com/healthcheck

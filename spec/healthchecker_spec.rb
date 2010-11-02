@@ -32,10 +32,6 @@ describe 'Healthchecker App' do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/'
     last_response.should be_ok
-    p '################## PRECISAMOS TESTAR A TELA MONTADA ####################'
-    # last_response.body.should include "my-200-project"
-    # last_response.body.should include "my-404-project"
-    # last_response.body.should include "my-500-project"
   end
   
 
@@ -47,23 +43,26 @@ describe 'Healthchecker App' do
   end
   
   it "should return a project status 200" do
+    expected_response = "{\"status\":\"200\",\"project_name\":\"my-200-project\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/projeto/my-200-project'
+    get '/project/my-200-project'
     last_response.should be_ok
-    last_response.body.should == "200" 
+    last_response.body.should == expected_response
   end
   
   it "should return a project status 404" do
+    expected_response = "{\"status\":\"404\",\"project_name\":\"my-404-project\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/projeto/my-404-project'
+    get '/project/my-404-project'
     last_response.should be_ok
-    last_response.body.should == "404" 
+    last_response.body.should == expected_response
   end
   
   it "should return a project status 500" do
+    expected_response = "{\"status\":\"500\",\"project_name\":\"my-500-project\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
-    get '/projeto/my-500-project'
+    get '/project/my-500-project'
     last_response.should be_ok
-    last_response.body.should == "500" 
+    last_response.body.should == expected_response
   end
 end
