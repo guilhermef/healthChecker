@@ -1,0 +1,68 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ---- reset 0.3 ---- */
+* {background:transparent;font-family:inherit;font-size:100%;margin:0;outline:0;padding:0;}
+body {background:#fff;line-height:1;}
+table {border-collapse:collapse;border-spacing:0;}
+legend {display:none;}
+li {list-style:none;}
+a {text-decoration:none;}
+caption,th {text-align:left;}
+blockquote:before,blockquote:after,q:before,q:after {content:"";content:none;}
+blockquote,q {quotes:"" "";}
+abbr,acronym,img,fieldset {border:0;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit;}
+
+/* ---- fonts 0.3 ---- */
+html {font:x-small arial,helvetica,freesans,sans-serif;*font-size:1.25ex;}
+body {font-size:1.2em;}
+select, input, textarea {font:0.99em arial,helvetica,clean,sans-serif;}

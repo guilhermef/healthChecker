@@ -14,7 +14,7 @@ before do
 end
 
 get '/' do
-  erb :index
+  haml :index
 end
 
 get "/config" do
