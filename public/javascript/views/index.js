@@ -1,25 +1,32 @@
 var config;
 
-$(document).ready(function(){
-	$.getJSON('/config', function(data){
-		config = data;
-		var monitores = '';
-		var $ul_moniotres = $('#monitores');
-		for (var project_key in config.projects) {
-			var project = config.projects[project_key];
-			$ul_moniotres.append(html_monitor_for(project));
-			setTimeout(function(){ updateStatus(project); },1000);
-		}
-	});
-});
+$(document).ready(getConfigAndMakeHtml);
 
+function getConfigAndMakeHtml(){
+  $.getJSON('/config',makeHtml);
+  setTimeout('getConfigAndMakeHtml()', 2000);
+}
+
+function makeHtml(data){
+  config = data;
+  var monitores = '';
+  var $ul_monitores = $('#monitores');
+  for (var project_key in config.projects) {
+    var project = config.projects[project_key];
+    if($.isEmptyObject($ul_monitores.find("li#"+project_key).html())){
+      $ul_monitores.append(html_monitor_for(project));
+    }
+    updateStatus(project);
+  }
+}
 
 function updateStatus(project){
   $.ajax({
-		url: 			'/project/'+project.id,
-		success:  function(data ){append_li_status(project,data)},
-		error:    showMessageError
-	});
+    url: '/project/'+project.id,
+    dataType: "json",
+    success:  append_li_status,
+    error:    showMessageError
+  });
 }
 
 function showMessageError(XMLHttpRequest, textStatus, errorThrown){
@@ -27,28 +34,52 @@ function showMessageError(XMLHttpRequest, textStatus, errorThrown){
   update_status('error',   project);
 }
 
-function append_li_status(project, status){
-  var $li = $("ul#monitores li#"+project.id);
+function append_li_status(data){
+  var $li = $("ul#monitores li#"+data.project_name);
   var $ul_electro = $li.find("ul");
   var old_status = $li.attr("status");
-  var actual_status = status;
-  var class_css = "";
-  if(actual_status == "200"){
-    if(actual_status != old_status){
-      class_css = "beginning_fail";
+  var actual_status = data.status;
+  $ul_electro.append(htmlFromStatus(actual_status,old_status));
+  $li.attr("status", actual_status);
+}
+
+function htmlFromStatus(actualStatus, oldStatus){
+  var ret = liHtmlForOk();
+  if(actualStatus == "200"){
+    if(changeStatus(actualStatus,oldStatus)){
+      ret = liHtmlForBeginningFail();
     }
   } else {
-    if(actual_status != old_status){
-      class_css = "beginning_ok";
+    if(changeStatus(actualStatus,oldStatus)){
+      ret = liHtmlForBeginningOk();
     }else {
-      class_css = "fail";
+      ret = liHtmlForFail();
     }
   }
-  html_li = '<li class="{classe}"></li>'.replace('{classe}',class_css);
-  $ul_electro.append(html_li);
+  return ret;
 }
+
+function changeStatus(actualStatus, oldStatus){
+  return (actualStatus != oldStatus);
+}
+
+function liHtmlForOk(){
+  return '<li class=""></li>'
+}
+
+function liHtmlForBeginningOk(){
+  return '<li class="beginning_ok"></li>'
+}
+
+function liHtmlForBeginningFail(){
+  return '<li class="beginning_fail"></li>'
+}
+function liHtmlForFail(){
+  return '<li class="fail"></li>'
+}
+
 function html_monitor_for(project){
-  var monitor_template = '<li id="{id}" status="200">{title}<ul><li></li><li class="beginning_fail"></li><li class="fail"></li><li class="beginning_ok"></li><li></li></ul></li>';
+  var monitor_template = '<li id="{id}" status="200">{title}<div><ul></ul></div></li>';
   return monitor_template.replace('{img}',   project.imgOk)
                          .replace('{title}', project.name)
                          .replace('{alt}',   project.name)
