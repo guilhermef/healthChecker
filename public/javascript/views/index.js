@@ -34,12 +34,20 @@ function showMessageError(XMLHttpRequest, textStatus, errorThrown){
   update_status('error',   project);
 }
 
+function append($ul,html){
+  var tam = $ul.find("li").length;
+  if(tam >= 8 ){
+    $ul.find("li:first").remove();
+  }
+  $ul.append(html);
+}
+
 function append_li_status(data){
   var $li = $("ul#monitores li#"+data.project_name);
   var $ul_electro = $li.find("ul");
   var old_status = $li.attr("status");
   var actual_status = data.status;
-  $ul_electro.append(htmlFromStatus(actual_status,old_status));
+  append($ul_electro,htmlFromStatus(actual_status,old_status));
   $li.attr("status", actual_status);
 }
 
@@ -79,9 +87,8 @@ function liHtmlForFail(){
 }
 
 function html_monitor_for(project){
-  var monitor_template = '<li id="{id}" status="200">{title}<div><ul></ul></div></li>';
-  return monitor_template.replace('{img}',   project.imgOk)
-                         .replace('{title}', project.name)
-                         .replace('{alt}',   project.name)
+  var monitor_template = '<li id="{id}" status="200" class="projeto"><span>{title}</span><div><ul></ul></div></li>';
+  return monitor_template.replace('{title}', project.name)
                          .replace('{id}',    project.id);
 }
+
