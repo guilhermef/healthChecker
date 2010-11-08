@@ -32,10 +32,13 @@ div#projetos{
 }
 
 ul#monitores li.projeto{
+  -moz-border-radius:5px 5px 5px 5px;
   background:url("/images/headdiv.gif") no-repeat scroll 0 -43px transparent;
+  border:1px solid #CCCCCC;
   display:inline-block;
   height:168px;
   margin-left:30px;
+  padding-top:10px;
   width:350px;
 }
 
@@ -44,6 +47,8 @@ ul#monitores span{
   margin-left:20px;
   margin-top:10px;
 }
+
+
 
 ul#monitores li div{
   background:none repeat scroll 0 0 #000000;
