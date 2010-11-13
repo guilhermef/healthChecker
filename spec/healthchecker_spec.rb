@@ -54,7 +54,6 @@ describe 'Healthchecker App' do
     expected_response = "{\"status\":\"200\",\"project_name\":\"my-200-project\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/project/my-200-project'
-    debugger
     last_response.should be_ok
     last_response.body.should == expected_response
   end
