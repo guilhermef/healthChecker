@@ -1,8 +1,12 @@
 require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 
-RSpec::Core::RakeTask.new(:spec)
 
+
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = ["--color"]
+  t.pattern = 'spec/**/*_spec.rb'
+end
 
 # Spec::Rake::SpecTask.new do |task|
 #     task.spec_opts = ['--colour --format specdoc --loadby mtime --reverse']
