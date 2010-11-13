@@ -28,7 +28,7 @@ p {line-height: 1.4em; padding-bottom: 25px}
 
 
 div#projetos{
-  margin:7px 30px 50px;
+  margin:7px 80px 50px;
 }
 
 ul#monitores li.projeto{
@@ -37,9 +37,10 @@ ul#monitores li.projeto{
   border:1px solid #CCCCCC;
   display:inline-block;
   height:168px;
-  margin-left:30px;
+  margin:10px;
   padding-top:10px;
-  width:350px;
+  position:relative;
+  width:376px;
 }
 
 ul#monitores span{
@@ -74,4 +75,18 @@ ul#monitores li ul li.beginning_ok{
 
 ul#monitores li ul li.beginning_fail{
   background-position:0 -79px;
+}
+
+ul#monitores li span.check_signal {
+  border-radius:50px;
+  -moz-border-radius:50px;
+  background:#b50000;
+  bottom:88px;
+  height:5px;
+  left:19px;
+  position:absolute;
+  width:5px;
+}
+ul#monitores li.analyzing span.check_signal {
+  background:#66ce00;
 }

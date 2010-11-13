@@ -13,21 +13,15 @@ describe 'Healthchecker App' do
                       {"my-200-project" =>
                         {"id" => "200-project",
                         "name" =>"my-200-project",
-                        "url" => "http://www.return.200.com/healthcheck",
-                        "imgOk" => "/images/imgOk.jpg",
-                        "imgOut" => "/images/imgOut.jpg"},
+                        "url" => "http://www.return.200.com/healthcheck"},
                       "my-404-project"=>
                         {"id" =>"404-project",
                         "name" => "my-404-project",
-                        "url" => "http://www.return.404.com/healthcheck",
-                        "imgOk" => "/images/imgOk.jpg",
-                        "imgOut" => "/images/imgOut.jpg"},
+                        "url" => "http://www.return.404.com/healthcheck"},
                       "my-500-project"=>
                         {"id" =>"500-project",
                         "name" => "my-500-project",
-                        "url" => "http://www.return.500.com/healthcheck",
-                        "imgOk" => "/images/imgOk.jpg",
-                        "imgOut" => "/images/imgOut.jpg"}
+                        "url" => "http://www.return.500.com/healthcheck"}
                         }
                     }
   end
@@ -47,7 +41,7 @@ describe 'Healthchecker App' do
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/config'
     last_response.should be_ok
-    last_response.body.should == "{\"projects\":{\"my-500-project\":{\"name\":\"my-500-project\",\"imgOk\":\"/images/imgOk.jpg\",\"imgOut\":\"/images/imgOut.jpg\",\"url\":\"http://www.return.500.com/healthcheck\",\"id\":\"500-project\"},\"my-404-project\":{\"name\":\"my-404-project\",\"imgOk\":\"/images/imgOk.jpg\",\"imgOut\":\"/images/imgOut.jpg\",\"url\":\"http://www.return.404.com/healthcheck\",\"id\":\"404-project\"},\"my-200-project\":{\"name\":\"my-200-project\",\"imgOk\":\"/images/imgOk.jpg\",\"imgOut\":\"/images/imgOut.jpg\",\"url\":\"http://www.return.200.com/healthcheck\",\"id\":\"200-project\"}}}"
+    last_response.body.should == "{\"projects\":{\"my-500-project\":{\"name\":\"my-500-project\",\"url\":\"http://www.return.500.com/healthcheck\",\"id\":\"500-project\"},\"my-404-project\":{\"name\":\"my-404-project\",\"url\":\"http://www.return.404.com/healthcheck\",\"id\":\"404-project\"},\"my-200-project\":{\"name\":\"my-200-project\",\"url\":\"http://www.return.200.com/healthcheck\",\"id\":\"200-project\"}}}"
   end
   
   it "should return a project status 200" do

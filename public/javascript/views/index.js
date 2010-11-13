@@ -16,6 +16,7 @@ function makeHtml(data){
     if($.isEmptyObject($ul_monitores.find("li#"+project_key).html())){
       $ul_monitores.append(html_monitor_for(project));
     }
+    showAnalyzing(project);
     updateStatus(project);
   }
 }
@@ -36,7 +37,7 @@ function showMessageError(XMLHttpRequest, textStatus, errorThrown){
 
 function append($ul,html){
   var tam = $ul.find("li").length;
-  if(tam >= 8 ){
+  if(tam >= 9 ){
     $ul.find("li:first").remove();
   }
   $ul.append(html);
@@ -87,8 +88,11 @@ function liHtmlForFail(){
 }
 
 function html_monitor_for(project){
-  var monitor_template = '<li id="{id}" status="200" class="projeto"><span>{title}</span><div><ul></ul></div></li>';
+  var monitor_template = '<li id="{id}" status="200" class="projeto"><span>{title}</span><span class="check_signal"></span><div><ul></ul></div></li>';
   return monitor_template.replace('{title}', project.name)
                          .replace('{id}',    project.id);
+}
+function showAnalyzing(project){
+  $("ul#monitores li#"+project.id).toggleClass("analyzing");
 }
 

@@ -4,12 +4,18 @@ projects:
     id:     colaboracoes
     name:   Colaborações
     url:    http://colaboracoes.globo.com/healthcheck
-    imgOk:  /images/colaboracoes.jpg
-    imgOut: /images/colaboracoes-red.jpg
 
   participacoes:
     id:     participacoes
     name:   Participações
     url:    http://participacoes.globo.com/healthcheck
-    imgOk:  /images/participacoes.jpg
-    imgOut: /images/participacoes-red.jpg
+
+  colaboracoes2:
+    id:     colaboracoes2
+    name:   Colaborações2
+    url:    http://colaboracoes.globo.com/healthcheck
+
+  participacoes2:
+    id:     participacoes2
+    name:   Participações2
+    url:    http://participacoes.globo.com/healthcheck
