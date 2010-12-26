@@ -8,4 +8,5 @@ group :test do
   gem "fakeweb"
   gem "rack-test"
   gem "mocha"
+  gem "jasmine"
 end
