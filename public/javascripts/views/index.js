@@ -1,13 +1,13 @@
 var config;
 
-$(document).ready(getConfigAndMakeHtml);
-
-function getConfigAndMakeHtml(){
+getConfigAndMakeHtml= function(){
   $.getJSON('/config',makeHtml);
   setTimeout('getConfigAndMakeHtml()', 2000);
 }
 
-function makeHtml(data){
+$(document).ready(getConfigAndMakeHtml);
+
+makeHtml = function(data){
   config = data;
   var monitores = '';
   var $ul_monitores = $('#monitores');
@@ -21,7 +21,7 @@ function makeHtml(data){
   }
 }
 
-function updateStatus(project){
+updateStatus = function (project){
   $.ajax({
     url: '/project/'+project.id,
     dataType: "json",
@@ -30,12 +30,12 @@ function updateStatus(project){
   });
 }
 
-function showMessageError(XMLHttpRequest, textStatus, errorThrown){
+showMessageError = function (XMLHttpRequest, textStatus, errorThrown){
   console.log(XMLHttpRequest, textStatus, errorThrown); 
   update_status('error',   project);
 }
 
-function append($ul,html){
+append = function($ul,html){
   var tam = $ul.find("li").length;
   if(tam >= 9 ){
     $ul.find("li:first").remove();
@@ -43,7 +43,7 @@ function append($ul,html){
   $ul.append(html);
 }
 
-function append_li_status(data){
+append_li_status= function (data){
   var $li = $("ul#monitores li#"+data.project_name);
   var $ul_electro = $li.find("ul");
   var old_status = $li.attr("status");
@@ -52,7 +52,7 @@ function append_li_status(data){
   $li.attr("status", actual_status);
 }
 
-function htmlFromStatus(actualStatus, oldStatus){
+htmlFromStatus = function(actualStatus, oldStatus){
   var ret = liHtmlForOk();
   if(actualStatus == "200"){
     if(changeStatus(actualStatus,oldStatus)){
@@ -68,10 +68,27 @@ function htmlFromStatus(actualStatus, oldStatus){
   return ret;
 }
 
-function changeStatus(actualStatus, oldStatus){
+changeStatus = function (actualStatus, oldStatus){
   return (actualStatus != oldStatus);
 }
 
+html_monitor_for = function (project){
+  var monitor_template = '<li id="{id}" status="200" class="projeto">'
+  monitor_template+=' <span>{title}</span>';
+  monitor_template+=' <span class="check_sign;al"></span>';
+  monitor_template+=' <div>';
+  monitor_template+=' <ul></ul>';
+  monitor_template+=' </div>';
+  monitor_template+=' </li>';
+  return monitor_template.replace('{title}', project.name)
+                         .replace('{id}',    project.id);
+}
+
+showAnalyzing = function (project){
+  $("ul#monitores li#"+project.id).toggleClass("analyzing");
+}
+
+//Parte de template para montar os elementos na tela
 function liHtmlForOk(){
   return '<li class=""></li>'
 }
@@ -86,13 +103,3 @@ function liHtmlForBeginningFail(){
 function liHtmlForFail(){
   return '<li class="fail"></li>'
 }
-
-function html_monitor_for(project){
-  var monitor_template = '<li id="{id}" status="200" class="projeto"><span>{title}</span><span class="check_signal"></span><div><ul></ul></div></li>';
-  return monitor_template.replace('{title}', project.name)
-                         .replace('{id}',    project.id);
-}
-function showAnalyzing(project){
-  $("ul#monitores li#"+project.id).toggleClass("analyzing");
-}
-
