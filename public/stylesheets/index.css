@@ -78,15 +78,15 @@ ul#monitores li ul li.beginning_fail{
 }
 
 ul#monitores li span.check_signal {
-  border-radius:50px;
-  -moz-border-radius:50px;
-  background:#b50000;
-  bottom:88px;
-  height:5px;
-  left:19px;
-  position:absolute;
-  width:5px;
+  background: url("/images/coracao.png") no-repeat scroll 0 0 transparent;
+  bottom: 88px;
+  height: 20px;
+  left: 19px;
+  position: absolute;
+  width: 20px;
 }
+
 ul#monitores li.analyzing span.check_signal {
-  background:#66ce00;
+  background-position: -20px 0;
+  width: 25px;
 }
