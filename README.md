@@ -55,7 +55,7 @@ This will start mongrel server. To access, open your favorite browser and type:
 </pre>
 
 
-That's all you need to get run your healthChecker funy pretty and usefull running.
+That's all you need to get run your healthChecker funy pretty and usefull.
 
 
 ## Make run (for developer)
