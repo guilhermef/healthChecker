@@ -45,7 +45,7 @@ describe 'Healthchecker App' do
   end
   
   it "should return a project status 200" do
-    expected_response = "{\"status\":\"200\",\"project_name\":\"my-200-project\"}"
+    expected_response = "{\"project_name\":\"my-200-project\",\"status\":\"200\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/project/my-200-project'
     last_response.should be_ok
@@ -53,7 +53,7 @@ describe 'Healthchecker App' do
   end
   
   it "should return a project status 404" do
-    expected_response = "{\"status\":\"404\",\"project_name\":\"my-404-project\"}"
+    expected_response = "{\"project_name\":\"my-404-project\",\"status\":\"404\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/project/my-404-project'
     last_response.should be_ok
@@ -61,7 +61,7 @@ describe 'Healthchecker App' do
   end
   
   it "should return a project status 500" do
-    expected_response = "{\"status\":\"500\",\"project_name\":\"my-500-project\"}"
+    expected_response = "{\"project_name\":\"my-500-project\",\"status\":\"500\"}"
     YAML.expects(:load_file).once.with('config.yml').returns(@config_mock)
     get '/project/my-500-project'
     last_response.should be_ok
