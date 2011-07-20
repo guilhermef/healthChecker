@@ -9,12 +9,12 @@ If you don't have a bundler in your system try this before:
 
 Do this steps bellow:
 <pre>
-  git clone git://github.com/aoqfonseca/healthChecker.git
+  git clone git://github.com/guilhermef/healthChecker.git
   cd healthChecker
   bundle install 
 </pre>
 
-After this all gems that will need will be installed in your system. I strong recommend to use RVM for this.
+After this all gems will be installed in your system. I strong recommend to use RVM for this.
 
 ## Super simple to use
 
