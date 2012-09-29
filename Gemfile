@@ -9,5 +9,6 @@ group :test do
   gem "mocha"
   gem "jasmine"
   gem "rake"
+  gem 'debugger'
   # gem 'jasmine-headless-webkit'
 end

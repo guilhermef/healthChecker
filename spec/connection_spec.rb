@@ -18,4 +18,9 @@ describe Connection, "#status" do
     response.status_code.should == '500'
   end
 
+  it "returns '404' on error" do
+    response = Connection.new("http://www.return.404.123123.com/healthcheck")
+    response.status_code.should == '404'
+  end
+
 end
