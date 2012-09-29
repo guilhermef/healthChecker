@@ -1,8 +1,8 @@
-# HealthCheckerNode
+# HealthChecker [![Build Status](https://secure.travis-ci.org/guilhermef/healthChecker.png)](http://travis-ci.org/guilhermef/healthChecker) [![Dependency Status](https://gemnasium.com/guilhermef/healthChecker.png)](https://gemnasium.com/guilhermef/healthChecker)
 
 ## Install
 
-If you don't have a bundler in your system try this before: 
+If you don't have a bundler in your system try this before:
 <pre>
     gem install bundle
 </pre>
@@ -11,7 +11,7 @@ Do this steps bellow:
 <pre>
   git clone git://github.com/guilhermef/healthChecker.git
   cd healthChecker
-  bundle install 
+  bundle install
 </pre>
 
 After this all gems will be installed in your system. I strong recommend to use RVM for this.
@@ -22,7 +22,7 @@ The propose is create a simples webapp to check health link from another webapps
 
 The goals are:
 
-* `very simple to use and configure` - I want to do something simple and very quickly to start. 
+* `very simple to use and configure` - I want to do something simple and very quickly to start.
 * `Rich and Funny interface` - There's a lot of other tools for this, but none of them is pretty or funny. I really want create an interface that you like see every time
 
 
@@ -43,13 +43,13 @@ The goals are:
       url:    http://www.andrefonseca.net/healthcheck
 </pre>
 
-After, than you will have your configuration done, do: 
+After, than you will have your configuration done, do:
 <pre>
     cd healthChecker
-    ruby healthChecker 
+    ruby healthChecker
 </pre>
 
-This will start mongrel server. To access, open your favorite browser and type: 
+This will start mongrel server. To access, open your favorite browser and type:
 <pre>
     http://localhost:4567/
 </pre>
