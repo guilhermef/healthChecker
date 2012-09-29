@@ -1,12 +1,13 @@
 source "http://rubygems.org"
-gem "sinatra", "~>1.0"
-gem "haml", "~>3.0.22"
+gem "sinatra"
+gem "haml"
 
 group :test do
-  gem "rspec", "~>2.0.1"
-  gem "cucumber"
+  gem "rspec"
   gem "fakeweb"
   gem "rack-test"
   gem "mocha"
   gem "jasmine"
+  gem "rake"
+  # gem 'jasmine-headless-webkit'
 end

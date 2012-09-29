@@ -1,8 +1,8 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 require 'connection'
 
 describe Connection, "#status" do
- 
+
   it "returns '200' for a alive service" do
     response = Connection.new("http://www.return.200.com/healthcheck")
     response.status_code.should == '200'
@@ -17,5 +17,5 @@ describe Connection, "#status" do
     response = Connection.new("http://www.return.500.com/healthcheck")
     response.status_code.should == '500'
   end
-  
+
 end
