@@ -17,7 +17,7 @@
           %h2 Projects
       .row
         - @config['projects'].each do |name, data|
-          .span3.well.project{data: {healthcheck: "/project/#{name}.json"}}
+          .span2.well.well-small.project{data: {healthcheck: "/project/#{name}.json"}}
             %h3=data['name']
 
     %script{:src => "/javascripts/lib/jquery-1.8.2.min.js", :type => "text/javascript"}

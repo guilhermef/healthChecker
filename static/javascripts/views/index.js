@@ -9,12 +9,12 @@ HealthChecker.prototype = {
   },
 
   setHealthcheck: function(i, element){
-    var project = $(element);
-    setInterval(this.healthCheck.bind(this, project), 5000);
+    var project = $(element),
+      url = project.data('healthcheck');
+    setInterval(this.healthCheck.bind(this, project, url), 10000);
   },
 
-  healthCheck: function(project){
-    var url = project.data('healthcheck');
+  healthCheck: function(project, url){
     project.removeClass('down').removeClass('ok');
     $.ajax({
       url: url,

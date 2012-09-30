@@ -12,3 +12,9 @@ projects:
       - http://xang.com/
       - http://xeng.com/
       - http://xing.com/
+  zang:
+    name:   Zang
+    url:
+      - http://zang.com/
+      - http://zeng.com/
+      - http://zing.com/
