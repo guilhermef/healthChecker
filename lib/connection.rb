@@ -5,12 +5,9 @@ class Connection
   attr_accessor :status_code
 
   def initialize(url)
-    uri = URI.parse(url)
+    uri = URI(url)
     begin
-      response = Net::HTTP.start(uri.host, uri.port) {|http|
-        http.get(uri.path)
-      }
-      status = response.code
+      status = Net::HTTP.get_response(uri).code
     rescue SocketError
       status = '404'
     ensure

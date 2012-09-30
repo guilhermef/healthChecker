@@ -1,28 +1,30 @@
-var healthCheckCallback = function(response){
-  var status = response.status;
-  this.addClass(status);
-
-  // if (status != "ok"){
-  //   var $errors = $('<span>').addClass('errors');
-
-  //   this.append
-  // }
+HealthChecker = function() {
+  this.init();
 };
 
-var healthCheck = function(project) {
-  var url = project.data('healthcheck');
-  project.removeClass('down').removeClass('ok');
-  $.ajax({
-    url: url,
-    context: project
-  }).done(healthCheckCallback);
+HealthChecker.prototype = {
+
+  init: function() {
+    $('.project').each(this.setHealthcheck.bind(this));
+  },
+
+  setHealthcheck: function(i, element){
+    var project = $(element);
+    setInterval(this.healthCheck.bind(this, project), 5000);
+  },
+
+  healthCheck: function(project){
+    var url = project.data('healthcheck');
+    project.removeClass('down').removeClass('ok');
+    $.ajax({
+      url: url,
+      context: project
+    }).done(this.healthCheckCallback);
+  },
+
+  healthCheckCallback: function(response){
+    this.addClass(response.status);
+  }
 };
 
-(function(){
-  $('.project').each(function(){
-    var project = $(this);
-    setInterval(function(){ healthCheck(project);}, 5000);
-  });
-})();
-
-
+new HealthChecker();
