@@ -1,0 +1,3 @@
+require './healthchecker'
+
+Healthchecker.run!

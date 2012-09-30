@@ -1,21 +1,14 @@
 ---
 projects:
-  colaboracoes:
-    id:     colaboracoes
-    name:   Colaborações
-    url:    http://colaboracoes.globo.com/healthcheck
-
-  participacoes:
-    id:     participacoes
-    name:   Participações
-    url:    http://participacoes.globo.com/healthcheck
-
-  colaboracoes2:
-    id:     colaboracoes2
-    name:   Colaborações2
-    url:    http://colaboracoes.globo.com/healthcheck
-
-  participacoes2:
-    id:     participacoes2
-    name:   Participações2
-    url:    http://participacoes.globo.com/healthcheck
+  globo:
+    name:   Globo
+    url:    http://www.globo.com/
+  bing:
+    name:   Bing
+    url:    http://br.bing.com/
+  xang:
+    name:   Xang
+    url:
+      - http://xang.com/
+      - http://xeng.com/
+      - http://xing.com/
