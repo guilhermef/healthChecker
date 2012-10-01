@@ -1,3 +1,3 @@
 require './healthchecker'
 
-Healthchecker.run!
+run Healthchecker
